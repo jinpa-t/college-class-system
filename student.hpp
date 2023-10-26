@@ -196,32 +196,31 @@ void Student::calculateGPA() {
     for (auto course : previousCourses) {
         std::string letterGrade = course.getGrades(studentId);
         if (letterGrade == "A+" || letterGrade == "A") {
-            totalGradePoint += 4;
+            totalGradePoint += (4 * course.getCredit());
         } else if (letterGrade == "A-") {
-            totalGradePoint += 3.7;
+            totalGradePoint += (3.7 * course.getCredit());
         } else if (letterGrade == "B+") {
-            totalGradePoint += 3.3;
+            totalGradePoint += (3.3 * course.getCredit());
         } else if (letterGrade == "B") {
-            totalGradePoint += 3;
+            totalGradePoint += (3 * course.getCredit());
         } else if (letterGrade == "B-") {
-            totalGradePoint += 2.7;
+            totalGradePoint += (2.7 * course.getCredit());
         } else if (letterGrade == "C+") {
-            totalGradePoint += 2.3;
+            totalGradePoint += (2.3 * course.getCredit());
         } else if (letterGrade == "C") {
-            totalGradePoint += 2;
+            totalGradePoint += (2 * course.getCredit());
         } else if (letterGrade == "C-") {
-            totalGradePoint += 1.7;
+            totalGradePoint += (1.7 * course.getCredit());
         } else if (letterGrade == "D+") {
-            totalGradePoint += 1.3;
+            totalGradePoint += (1.3 * course.getCredit());
         } else if (letterGrade == "D") {
-            totalGradePoint += 1;
+            totalGradePoint += (1 * course.getCredit());
         } else if (letterGrade == "F") {
-            totalGradePoint += 0;
+            totalGradePoint += (0 * course.getCredit());
         }
         totalCreditHours += course.getCredit();
     }
-    
-    gpa = (totalCreditHours * totalCreditHours)/totalCreditHours;
+    gpa = totalGradePoint/totalCreditHours;
 }
 
 double Student::getGpa() const {
